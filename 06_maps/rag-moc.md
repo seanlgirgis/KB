@@ -24,6 +24,9 @@ Index for retrieval-augmented generation concepts, patterns, and experiments.
 ## Chunking & indexing
 
 - [[rag-vector-store-and-ingest-manifest]] — ingest manifest vs vector store dir (dedupe at ingest)
+- [[python-hashlib-sha256-fingerprints]] — `content_hash` fingerprints for skip/re-ingest
+- [[python-urllib-urls-and-fetching]] — `is_url` guard, fetch URL sources, `source_id`
+- [[normalize-source-url-or-local-path]] — stable manifest keys for URL vs file input
 
 ## Retrieval strategies
 

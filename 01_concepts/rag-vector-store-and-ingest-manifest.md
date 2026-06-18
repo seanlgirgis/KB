@@ -15,6 +15,10 @@ created: 2026-06-18
 updated: 2026-06-18
 related:
   - "[[rag-moc]]"
+  - "[[python-hashlib-sha256-fingerprints]]"
+  - "[[python-tempfile-temporary-storage]]"
+  - "[[python-urllib-urls-and-fetching]]"
+  - "[[normalize-source-url-or-local-path]]"
 source: Distilled from LangChain capstone storage note (learning/playground)
 ---
 
@@ -63,7 +67,7 @@ Treat the whole directory as one artifact — back it up, version paths in confi
 
 ## Ingest manifest
 
-A **manifest** is a small JSON (or SQLite) file **your pipeline maintains**. Each ingested source gets a row keyed by a stable `source_id` (canonical file path, vault-relative path, or URL).
+A **manifest** is a small JSON (or SQLite) file **your pipeline maintains**. Each ingested source gets a row keyed by a stable `source_id` — normalize first with [[normalize-source-url-or-local-path]] (absolute path or stripped URL) so `./file.pdf` and `/full/path/file.pdf` share one row.
 
 Typical fields per source:
 
@@ -196,4 +200,8 @@ store.add_documents(new_chunks)
 
 ## See also
 
+- [[python-hashlib-sha256-fingerprints]] — how `content_hash` is computed
+- [[python-tempfile-temporary-storage]] — staging downloads before loaders run
+- [[python-urllib-urls-and-fetching]] — URL `source_id` and `urlopen` fetch
+- [[normalize-source-url-or-local-path]] — canonical path or URL before manifest write
 - [[rag-moc]]

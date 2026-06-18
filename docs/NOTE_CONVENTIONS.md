@@ -129,6 +129,22 @@ Do **not** split a small example into a separate snippet file “for convention�
 
 ---
 
+## Paste capture checklist (Grok Build)
+
+When Sean pastes raw content (chat answer, study note, snippet), **do not paste as-is**. Apply full kb standards in one pass:
+
+1. **Prune** — remove meta (“copy into Obsidian”, “want a companion note?”), capstone/course specifics unless `source:` provenance.
+2. **Folder** — `01_concepts/` default; one-sheet rule for idea + code.
+3. **Frontmatter** — complete `title`, `tags`, `topics`, `status: curated`, `created`, `updated`, `related`, `source` (if known). No `category` / `date` aliases.
+4. **Tags** — lowercase; include `python` on any Python/stdlib note; include `rag` / `vector-db` / etc. when topic is RAG.
+5. **Topics** — broader filter layer (e.g. `software-engineering`, `indexing`, `retrieval`).
+6. **Body** — summary paragraph, H2 chunk sections, **Example** for code, **See also** wikilinks.
+7. **Graph** — `related:` must list every significant body link + MOC; add **bidirectional** `related` / See also on linked notes when logical.
+8. **MOC** — update nearest map in `06_maps/` (do not skip because “bite-sized”).
+9. **Validate** — first line under H1 answers what/when; each H2 opens with standalone context for RAG chunks.
+
+---
+
 ## RAG chunking hints
 
 Write so an automated splitter can use H2 boundaries:

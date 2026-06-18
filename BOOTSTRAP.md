@@ -58,8 +58,8 @@ Use for one idea, snippet, pattern, or short learning session.
 Default work:
 
 - create or update one note (or inbox stub)
-- add wikilinks and tags
-- touch the nearest MOC only if it clearly helps navigation
+- **user paste → full standards pass** — see [docs/NOTE_CONVENTIONS.md](docs/NOTE_CONVENTIONS.md#paste-capture-checklist-grok-build); never dump pasted markdown as-is
+- complete frontmatter (`tags`, `topics`, `related`), H2 chunks, MOC update, cross-links
 
 Do **not** update after every bite-sized item unless explicitly requested:
 
