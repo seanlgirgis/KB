@@ -19,6 +19,11 @@ related:
   - "[[python-tempfile-temporary-storage]]"
   - "[[python-urllib-urls-and-fetching]]"
   - "[[normalize-source-url-or-local-path]]"
+  - "[[ingest-cli-parser-and-handlers]]"
+  - "[[python-json-read-write-files]]"
+  - "[[ingest-manifest-schema-and-fields]]"
+  - "[[chroma-persist-append-and-reingest]]"
+  - "[[rag-ingest-pipeline-spine]]"
 source: Distilled from LangChain capstone storage note (learning/playground)
 ---
 
@@ -204,4 +209,9 @@ store.add_documents(new_chunks)
 - [[python-tempfile-temporary-storage]] — staging downloads before loaders run
 - [[python-urllib-urls-and-fetching]] — URL `source_id` and `urlopen` fetch
 - [[normalize-source-url-or-local-path]] — canonical path or URL before manifest write
+- [[ingest-cli-parser-and-handlers]] — `cmd_list()` reads manifest without Chroma
+- [[python-json-read-write-files]] — `save_json` / `load_json` for ledger files
+- [[ingest-manifest-schema-and-fields]] — field-by-field manifest contract
+- [[chroma-persist-append-and-reingest]] — writing vectors after manifest decision
+- [[rag-ingest-pipeline-spine]] — full pipeline context
 - [[rag-moc]]

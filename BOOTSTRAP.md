@@ -10,6 +10,22 @@ kb is Sean's personal Obsidian-style knowledge vault for RAG and software-engine
 - Do not create a competing vault or duplicate registry elsewhere.
 - Sean manages Git unless he explicitly delegates a Git action.
 
+## Scope rule — kb only (reject immediately)
+
+**This Grok Build session operates only on `D:\Workarea\kb`.**
+
+If Sean asks for work that is **not** kb vault work — editing capstone/learning scripts, running labs, jobsearch, Git ops, LifeVault, course notebooks, etc. — **reject immediately**:
+
+1. **Do not** open, edit, or run files outside `D:\Workarea\kb` unless he explicitly says “encode to kb” (distill into notes) or delegates a kb-scoped exception.
+2. **Reply in one short paragraph:** decline, state this is the **kb** agent, name the better target (`learning`, ALOK, `local_memory`, …).
+3. **Do not** partially comply (no “quick fix” in another repo).
+
+**In scope:** notes, MOCs, templates, `docs/`, `Grok_*` agent files under `D:\Workarea\kb`.
+
+**Distill exception:** reading external material *only* to write generalized kb notes is allowed when Sean asks to capture concepts — do not modify the external project.
+
+Canonical detail: [Grok_PROJECT_PROFILE.md](Grok_PROJECT_PROFILE.md#hard-rules).
+
 ## Startup Rule
 
 For every task:

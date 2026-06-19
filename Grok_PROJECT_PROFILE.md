@@ -136,6 +136,7 @@ Markdown notes are authoritative. See [docs/VAULT_MODEL.md](docs/VAULT_MODEL.md)
 
 ## Hard Rules
 
+- **kb scope only — reject non-kb tasks immediately (2026-06-18):** If the request is not vault work under `D:\Workarea\kb` (notes, MOCs, templates, governance, `Grok_*`), decline at once. Do not edit capstone scripts, learning labs, or other repos in this session. Exception: read external sources **only** to distill generalized kb notes when Sean asks to capture. Point him to **learning**, **ALOK**, **local_memory**, or **LifeVault** as appropriate.
 - **RAG-ready by default:** YAML frontmatter, clear H2 sections, stable filenames.
 - **Obsidian-native:** wikilinks `[[note-title]]`, tags, MOCs in `06_maps/`.
 - **Atomic notes:** one main idea per file; link out instead of duplicating.
@@ -165,6 +166,7 @@ Task:
 [one narrowly scoped task]
 
 Must not:
+- Execute tasks outside `D:\Workarea\kb` (reject immediately; see Hard Rules)
 - Run Git operations unless delegated
 - Store work onboarding (ALOK), course packages (learning), or command nuggets (local_memory)
 - Update Grok_CURRENT_STATE.md unless milestone work

@@ -18,6 +18,7 @@ Index for patterns, architecture, and engineering practices.
 ## Patterns
 
 - [[normalize-source-url-or-local-path]] — `normalize_source()` for URL strip or absolute local path
+- [[ingest-cli-parser-and-handlers]] — `cmd_list`, `cmd_probe`, `build_parser`, `main` dispatch
 
 ## Architecture
 
@@ -30,6 +31,8 @@ Index for patterns, architecture, and engineering practices.
 - [[password-hashing-one-way-storage]] — salted slow hashes; why sites cannot “remind” passwords
 - [[python-tempfile-temporary-storage]] — temp files/dirs, context managers, ingest staging
 - [[python-urllib-urls-and-fetching]] — `urlparse`, `is_url`, `urlopen`, ingest routing
+- [[python-argparse-cli]] — `ArgumentParser`, flags, optional positionals
+- [[python-json-read-write-files]] — `json.dump` / `load`, UTF-8, atomic save
 
 ## Testing & quality
 

@@ -2,7 +2,7 @@
 
 Stable architecture and durable decisions. Update when vault design or RAG strategy changes — not after every note capture.
 
-**Last updated:** 2026-06-18 (one-sheet rule)
+**Last updated:** 2026-06-18 (kb-only scope)
 
 ---
 
@@ -94,6 +94,7 @@ Use sparingly; extend as the vault grows.
 - **Default work mode:** bite-sized capture
 - **One-sheet rule (2026-06-18):** Tightly coupled concept + short example → **one note** in `01_concepts/` or `02_patterns/` with an H2 **Example** section (code + usage notes). RAG chunks on H2, not file count; one sheet improves human reading and single-hit LLM context. Split to `03_snippets/` only when the same block is reused across 3+ notes or code-only retrieval is explicitly needed. Canonical detail: [docs/NOTE_CONVENTIONS.md](docs/NOTE_CONVENTIONS.md#one-sheet-rule-concept--example).
 - **Paste capture (2026-06-18):** When Sean supplies raw content, Grok Build applies full kb standards automatically — prune meta, kb frontmatter, tags/topics (`python` on stdlib notes), H2 RAG chunks, MOC update, bidirectional `related` links. Checklist: [docs/NOTE_CONVENTIONS.md](docs/NOTE_CONVENTIONS.md#paste-capture-checklist-grok-build).
+- **kb-only scope (2026-06-18):** Non-kb tasks (capstone coding, learning labs, other repos) → **reject immediately**; no edits or runs outside `D:\Workarea\kb`. Distill-from-external → kb notes is OK when requested. See [BOOTSTRAP.md](BOOTSTRAP.md#scope-rule--kb-only-reject-immediately).
 - **Obsidian:** primary editor; no custom plugin requirements yet
 - **Git:** Sean manages; kb folder already has `.git` initialized
 - **Python venv:** use `D:\py_venv\rag_application_builder_foundation\set_env.ps1` only when a task runs Python (ingestion scripts, experiments)
