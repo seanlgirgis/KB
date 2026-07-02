@@ -10,11 +10,13 @@ topics:
   - retrieval
 status: curated
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-06-19
 related:
   - "[[langchain-documents-and-loaders]]"
   - "[[rag-ingest-query-settings-parity]]"
   - "[[rag-ingest-pipeline-spine]]"
+  - "[[rag-pipeline-tool-stages]]"
+  - "[[rag-framework-ecosystem-comparison]]"
   - "[[rag-moc]]"
 source:
 ---
@@ -24,6 +26,12 @@ source:
 LLMs and embedding APIs have **limited context**. Long documents must be cut into **chunks** — smaller text segments that each become one vector in search. A **text splitter** decides *where* to cut and how much overlap to keep between neighbors so answers do not lose sentences split in half.
 
 **Layman analogy:** a long article is chopped into index cards. Each card fits in the search drawer (embedding limit). Slight overlap between cards so a sentence is not cut off at the edge with no context on the next card.
+
+## Why split (context window)
+
+The **primary purpose** of text splitting in LangChain is to break long documents into **chunks that fit within the LLM and embedding context windows**. Without splitting, whole PDFs exceed token limits at ingest (embeddings) and at answer time (`stuff` packing).
+
+Secondary benefits: finer retrieval targets, lower per-call token cost — but **fit-in-window** is the main reason.
 
 ## Core idea
 

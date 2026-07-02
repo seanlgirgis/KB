@@ -11,8 +11,9 @@ topics:
   - retrieval
 status: curated
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-06-19
 related:
+  - "[[chroma-from-documents-indexing]]"
   - "[[watsonx-truncate-input-tokens-rag-trap]]"
   - "[[rag-vector-store-and-ingest-manifest]]"
   - "[[tag-chunks-with-source-metadata]]"
@@ -27,6 +28,8 @@ source:
 LangChain’s **Chroma** integration can **create** a new on-disk store or **open** an existing one and append documents. Re-ingest (changed file or `--force`) must **delete old chunks for that source** before adding new ones, or searches return duplicates and stale text.
 
 **Layman analogy:** first book fills a new filing cabinet (`from_documents`). Later books slide into the same cabinet (`add_documents`). When you replace a book, pull out **all its old cards** first (`delete` by source tag), then file the new set.
+
+What `from_documents` accepts and does per chunk: [[chroma-from-documents-indexing]].
 
 ## Open or create
 

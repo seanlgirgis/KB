@@ -16,6 +16,8 @@ related:
   - "[[watsonx-truncate-input-tokens-rag-trap]]"
   - "[[chroma-stores-vectors-text-metadata]]"
   - "[[pluggable-embedding-models]]"
+  - "[[cosine-similarity-vector-retrieval]]"
+  - "[[retrieval-ranking-pipeline]]"
   - "[[langchain-rag-chains-overview]]"
   - "[[rag-moc]]"
 source: Distilled from retrieval debugger script pattern (learning capstone)

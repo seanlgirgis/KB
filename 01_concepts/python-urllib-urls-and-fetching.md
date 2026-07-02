@@ -12,8 +12,9 @@ topics:
   - python-tooling
 status: curated
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-06-19
 related:
+  - "[[flask-http-get-and-post]]"
   - "[[python-tempfile-temporary-storage]]"
   - "[[rag-vector-store-and-ingest-manifest]]"
   - "[[python-hashlib-sha256-fingerprints]]"
@@ -21,7 +22,7 @@ related:
   - "[[software-engineering-moc]]"
 source:
 ---
-I like y
+But maybe a folder per moc is notI like y
 # Python urllib — Parse URLs and Fetch Remote Content
 
 `urllib` is Python’s built-in package for working with URLs — splitting them into parts, checking whether a string looks like **http/https**, and fetching remote content without third-party HTTP libraries. The two modules you reach for most often are **`urllib.parse`** (parse and validate URL shape) and **`urllib.request`** (open a URL and read bytes). Ingest pipelines typically branch: `is_url(source)` → `urlopen`; else treat `source` as a local path.
@@ -214,6 +215,7 @@ See [[python-tempfile-temporary-storage]] for cleanup and [[rag-vector-store-and
 
 ## See also
 
+- [[flask-http-get-and-post]] — GET/POST on the **server** (Flask routes) vs client fetch here
 - [[python-tempfile-temporary-storage]] — stage downloaded bytes for path-based loaders
 - [[python-hashlib-sha256-fingerprints]] — hash fetched bytes for manifest dedupe
 - [[rag-vector-store-and-ingest-manifest]] — URL sources in ingest ledger

@@ -11,9 +11,16 @@ topics:
   - software-engineering
 status: curated
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-06-19
 related:
+  - "[[langchain-agent-patterns-overview]]"
+  - "[[langchain-react-agent-loop]]"
+  - "[[fixed-pipeline-vs-langchain-agent]]"
+  - "[[conversation-buffer-memory]]"
+  - "[[langchain-remember-me-chat-repl]]"
   - "[[retrievalqa-chain-type-packing]]"
+  - "[[langchain-lcel-build-sequence]]"
+  - "[[langchain-classic-chains-overview]]"
   - "[[langchain-package-ecosystem]]"
   - "[[langchain-documents-and-loaders]]"
   - "[[chroma-persist-append-and-reingest]]"
@@ -25,6 +32,8 @@ source:
 # LangChain RAG Chains Overview
 
 LangChain offers **many ways** to wire retrieve-then-answer. They share the same RAG idea — find relevant chunks, then let an LLM answer using them — but differ in **packaging era** (classic chains vs LCEL) and **features** (memory, agents, reranking).
+
+For **`LLMChain`**, **`SequentialChain`**, and classic chain taxonomy (not RAG-specific), see [[langchain-classic-chains-overview]].
 
 **Layman:** same job (librarian + writer), different assembly kits.
 
@@ -42,8 +51,9 @@ Ingest (your vault notes) fills the store; these patterns **read** it at query t
 |----------|--------------|---------------|---------------|
 | **RetrievalQA** | Classic — `langchain_classic.chains` | One class: `qa.invoke(question)` | Capstone chat, lab 31 |
 | **LCEL RAG** | Current — `langchain` chains helpers | Composable pipes: `retriever \| prompt \| llm` | Newer course labs |
-| **Conversational retrieval** | Classic + memory | RAG plus chat history (“follow-up” questions) | Multi-turn tutors |
-| **Agent + tools** | Agents | LLM chooses when to call a search tool | Flexible but less predictable |
+| **ConversationChain + buffer** | Classic — `langchain_classic` | Multi-turn chat; **no** retriever — RAM history only | Capstone 03 remember-me |
+| **Conversational retrieval** | Classic + memory + retriever | RAG **plus** chat history (“follow-up” questions) | Multi-turn tutors |
+| **Agent + ReAct** | `langchain_classic.agents` | LLM Thought → Action → Observation loop | Capstone 04 — [[langchain-react-agent-loop]] |
 | **RAG + reranker** | Add-on stage | Retrieve many → rerank → stuff top hits | Production quality tuning |
 
 ## RetrievalQA (what you use now)
@@ -75,6 +85,8 @@ Same retrieve → answer logic, built from **Runnable** pieces:
 
 **Layman:** LEGO blocks instead of one pre-built toy. More flexible; more pieces to name.
 
+Build sequence and pipe syntax: [[langchain-lcel-build-sequence]].
+
 ## Classic vs LCEL
 
 | | Classic (`RetrievalQA`) | LCEL |
@@ -91,8 +103,10 @@ Both can use the same **Chroma** store and **embedding model** — see [[rag-ing
 |------|------------|
 | First working RAG Q&A | **RetrievalQA** + `stuff` |
 | Custom prompts / middleware | **LCEL** |
-| “What did we talk about earlier?” | **Conversational retrieval** |
-| Open-ended tool use | **Agent** (later) |
+| Session facts only (name, preferences this chat) | **ConversationChain** + buffer — [[conversation-buffer-memory]] |
+| “What did we talk about earlier?” **and** corpus docs | **Conversational retrieval** |
+| RAG + math + optional skip retrieve | **ReAct agent** — [[fixed-pipeline-vs-langchain-agent]] |
+| Open-ended multi-tool routing | **Agent** + tools — [[langchain-react-agent-executor]] |
 | Noisy retrieval at scale | **Reranker** after retrieve |
 
 You do **not** need every pattern for capstone completion.
@@ -101,8 +115,37 @@ You do **not** need every pattern for capstone completion.
 
 `vector_store` is a **LangChain `Chroma` object** ([[langchain-package-ecosystem]]). `as_retriever()` is LangChain’s interface; it searches the **Chroma files** ingest created.
 
+## ReAct agent (Capstone 04)
+
+```python
+from langchain_classic.agents import AgentExecutor, create_react_agent
+
+executor = AgentExecutor(agent=create_react_agent(llm, tools, prompt), tools=tools)
+executor.invoke({"input": "What is 25 + 63?"})
+```
+
+RAG as optional tool — not fixed retrieve: [[rag-as-agent-tool]]. Full script: [[langchain-research-agent-repl]].
+
+## ConversationChain (Capstone 03 — not RAG)
+
+```python
+from langchain_classic.chains import ConversationChain
+from langchain_classic.memory import ConversationBufferMemory
+
+chain = ConversationChain(llm=llm, memory=ConversationBufferMemory(), prompt=...)
+chain.invoke(input="My name is Sean")
+```
+
+Full REPL + CLI: [[langchain-remember-me-chat-repl]]. Memory types: [[langchain-memory-types-overview]]. JSON persist: [[chat-session-memory-persist-json]]. vs RAG: [[capstone-rag-vs-session-memory]].
+
 ## See also
 
+- [[langchain-agent-patterns-overview]]
+- [[langchain-react-agent-loop]]
+- [[fixed-pipeline-vs-langchain-agent]]
+- [[rag-as-agent-tool]]
+- [[conversation-buffer-memory]]
+- [[langchain-remember-me-chat-repl]]
 - [[retrievalqa-chain-type-packing]] — four `chain_type` values in depth
 - [[pluggable-embedding-models]] — LLM + embeddings in chains
 - [[chroma-persist-append-and-reingest]] — store chat opens

@@ -16,6 +16,7 @@ related:
   - "[[langchain-documents-and-loaders]]"
   - "[[tag-chunks-with-source-metadata]]"
   - "[[rag-vector-store-and-ingest-manifest]]"
+  - "[[chroma-from-documents-indexing]]"
   - "[[rag-moc]]"
 source: Distilled from capstone Chroma debug (learning)
 ---

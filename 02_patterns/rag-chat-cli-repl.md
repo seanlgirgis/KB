@@ -10,8 +10,10 @@ topics:
   - software-engineering
 status: curated
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-06-19
 related:
+  - "[[langchain-remember-me-chat-repl]]"
+  - "[[conversation-buffer-memory]]"
   - "[[ingest-cli-parser-and-handlers]]"
   - "[[langchain-rag-chains-overview]]"
   - "[[rag-ingest-chat-two-script-architecture]]"
@@ -61,6 +63,15 @@ def main() -> None:
 | Chain built once | Avoid reloading Chroma / LLM per question |
 | Guard before chain | [[rag-shared-config-module]] `chroma_has_data()` |
 
+## Same REPL, different chain
+
+| Script style | Chain | Memory |
+|--------------|-------|--------|
+| Capstone 01 RAG | `RetrievalQA` | Chroma corpus (disk) |
+| Capstone 03 remember-me | `ConversationChain` | `ConversationBufferMemory` (RAM) |
+
+See [[langchain-remember-me-chat-repl]] and [[conversation-buffer-memory]].
+
 ## vs ingest CLI
 
 | | Ingest | Chat |
@@ -70,6 +81,8 @@ def main() -> None:
 
 ## See also
 
+- [[langchain-remember-me-chat-repl]]
+- [[conversation-buffer-memory]]
 - [[rag-ingest-chat-two-script-architecture]]
 - [[debug-retrieval-without-llm]] — run before tuning chat
 - [[rag-moc]]

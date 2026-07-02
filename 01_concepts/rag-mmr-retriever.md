@@ -9,11 +9,14 @@ topics:
   - retrieval
 status: curated
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-06-19
 related:
   - "[[retrievalqa-chain-type-packing]]"
   - "[[debug-retrieval-without-llm]]"
   - "[[rag-llm-size-vs-retrieval-quality]]"
+  - "[[retrieval-ranking-pipeline]]"
+  - "[[cosine-similarity-vector-retrieval]]"
+  - "[[dense-passage-retrieval-dpr]]"
   - "[[rag-text-chunking-splitters]]"
   - "[[rag-moc]]"
 source: Distilled from MMR retriever settings (learning capstone chat)
@@ -23,7 +26,25 @@ source: Distilled from MMR retriever settings (learning capstone chat)
 
 **MMR** (Maximal Marginal Relevance) retrieval fetches chunks that are relevant to the question but **not redundant** with each other. Plain top-k similarity often returns five near-duplicate passages — common with PDF tables and repeated example Q&A blocks.
 
-**Layman:** pick the best card, then the next best card that says something **different**, not the same paragraph five times.
+**Layman:** librarian shortlists 20 cards on topic, then picks 5 from different shelves — not five photocopies of one page.
+
+## Where MMR sits in the pipeline
+
+MMR runs **after** cosine similarity already scored the full index. See [[retrieval-ranking-pipeline]]:
+
+```text
+embed query → cosine rank all chunks → top fetch_k (20) → MMR → k (5) → LLM
+```
+
+| Step | What happens |
+|------|----------------|
+| Cosine | Every chunk gets a relevance score vs the question — [[cosine-similarity-vector-retrieval]] |
+| `fetch_k=20` | Keep the best 20 by score (candidate pool) |
+| MMR | Pick **5** that are relevant **and** not redundant with each other |
+
+**Problem without MMR:** top 20 might be five copies of the same Gao survey paragraph — all high cosine, low new information.
+
+MMR balances **relevance** (still similar to the question) and **diversity** (not too similar to chunks already picked).
 
 ## Syntax (LangChain Chroma)
 
@@ -69,6 +90,9 @@ Use MMR when corpus has repetitive structure (papers with benchmark tables, FAQ-
 
 ## See also
 
+- [[retrieval-ranking-pipeline]]
+- [[cosine-similarity-vector-retrieval]]
+- [[dense-passage-retrieval-dpr]]
 - [[debug-retrieval-without-llm]]
 - [[rag-custom-qa-prompt]]
 - [[rag-moc]]

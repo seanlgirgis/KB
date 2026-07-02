@@ -12,6 +12,7 @@ status: curated
 created: 2026-06-19
 updated: 2026-06-19
 related:
+  - "[[chroma-from-documents-indexing]]"
   - "[[langchain-package-ecosystem]]"
   - "[[chroma-stores-vectors-text-metadata]]"
   - "[[chroma-persist-append-and-reingest]]"
@@ -36,7 +37,7 @@ from langchain_chroma import Chroma
 
 | Operation | API |
 |-----------|-----|
-| Create + persist | `Chroma.from_documents(docs, embedding, persist_directory=dir)` |
+| Create + persist | `Chroma.from_documents(docs, embedding, persist_directory=dir)` — [[chroma-from-documents-indexing]] |
 | Load existing | `Chroma(persist_directory=dir, embedding_function=embed)` |
 | Retriever | `store.as_retriever(search_type="mmr", search_kwargs={...})` |
 

@@ -40,6 +40,8 @@ Split **ingest** and **chat** into two scripts, but extract **one shared module*
 
 **Keep out of shared:** manifest read/write orchestration, CLI handlers, `RetrievalQA`, PDF/web load helpers — those stay in ingest or chat.
 
+**Provider swap:** bump `CHROMA_DIR` when embedding provider changes — [[chroma-dir-version-embedding-provider]]. Capstone 04 agent reads the same path as 01 chat.
+
 ## Example skeleton
 
 ```python

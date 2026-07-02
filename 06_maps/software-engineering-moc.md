@@ -6,7 +6,7 @@ topics:
   - software-engineering
 status: curated
 created: 2026-06-18
-updated: 2026-06-18
+updated: 2026-06-19
 related:
   - "[[python-project-root-for-imports]]"
 ---
@@ -20,11 +20,18 @@ Index for patterns, architecture, and engineering practices.
 - [[normalize-source-url-or-local-path]] — `normalize_source()` for URL strip or absolute local path
 - [[ingest-cli-parser-and-handlers]] — `cmd_list`, `cmd_probe`, `build_parser`, `main` dispatch
 
+## Web & HTTP
+
+- [[agentic-rag-web-service-stack]] — FastAPI/Flask/LangServe serving RAG and agents
+- [[flask-http-get-and-post]] — GET vs POST, Flask routes, `request.args` / `request.form`
+
 ## Architecture
 
 -
 
 ## Python & tooling
+
+Full stdlib index: [[python-moc]].
 
 - [[python-project-root-for-imports]] — find the import root, add to `sys.path`, copy-paste block
 - [[python-hashlib-sha256-fingerprints]] — `hashlib.sha256()` for file and byte fingerprints

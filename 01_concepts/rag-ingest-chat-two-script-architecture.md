@@ -16,13 +16,14 @@ related:
   - "[[rag-ingest-pipeline-spine]]"
   - "[[debug-retrieval-without-llm]]"
   - "[[langchain-rag-chains-overview]]"
+  - "[[agentic-rag-web-service-stack]]"
   - "[[rag-moc]]"
 source: Distilled from two-script + shared module pattern (learning capstone)
 ---
 
 # RAG Ingest and Chat Two-Script Architecture
 
-Production-shaped RAG prototypes split into **prepare once** (ingest) and **ask many times** (chat), plus optional **debug retrieval** and a **shared config** module. Same idea as real apps: ETL pipeline vs query API.
+Production-shaped RAG prototypes split into **prepare once** (ingest) and **ask many times** (chat), plus optional **debug retrieval** and a **shared config** module. Same idea as real apps: ETL pipeline vs query API. HTTP deployment maps the same roles to routes — [[agentic-rag-web-service-stack]].
 
 **Layman:** Script A files books in the cabinet; Script B only asks questions across all filed books; Script C shows which cards were pulled — without calling the writer.
 
@@ -71,6 +72,7 @@ DEBUG (when chat looks wrong)
 | Manifest + Chroma | [[rag-vector-store-and-ingest-manifest]] |
 | PDF vs web bytes | [[read-source-bytes-and-loader-path]], [[incremental-rag-web-ingest]] |
 | Chroma package | [[langchain-chroma-package]] |
+| Retrieval ranking | [[retrieval-ranking-pipeline]], [[dense-passage-retrieval-dpr]], [[cosine-similarity-vector-retrieval]] |
 | MMR retriever | [[rag-mmr-retriever]] |
 | Custom QA prompt | [[rag-custom-qa-prompt]] |
 | Debug script | [[debug-retrieval-without-llm]] |
@@ -88,6 +90,12 @@ DEBUG (when chat looks wrong)
 5. chat              (questions)
 ```
 
+## Related capstone track (no RAG)
+
+Capstone 03 **remember-me** — `ConversationChain` + buffer/summary memory; optional JSON persist. No ingest, no Chroma. See [[capstone-rag-vs-session-memory]] and [[langchain-remember-me-chat-repl]].
+
 ## See also
 
+- [[conversation-buffer-memory]]
+- [[langchain-remember-me-chat-repl]]
 - [[rag-moc]]

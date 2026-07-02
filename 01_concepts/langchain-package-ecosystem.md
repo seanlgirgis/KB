@@ -12,6 +12,8 @@ status: curated
 created: 2026-06-18
 updated: 2026-06-19
 related:
+  - "[[rag-pipeline-tool-stages]]"
+  - "[[rag-framework-ecosystem-comparison]]"
   - "[[langchain-documents-and-loaders]]"
   - "[[pluggable-embedding-models]]"
   - "[[rag-text-chunking-splitters]]"
@@ -21,7 +23,7 @@ source:
 
 # LangChain Package Ecosystem (Split Packages)
 
-Modern LangChain splits across **multiple pip packages** instead of one monolith. RAG ingest scripts typically import loaders and vector stores from **community**, splitters from **text-splitters**, and core abstractions from **langchain-core**.
+Modern LangChain splits across **multiple pip packages** instead of one monolith. RAG ingest scripts typically import loaders and vector stores from **community**, splitters from **text-splitters**, and core abstractions from **langchain-core**. Stage-by-stage map (load → split → embed → parse): [[rag-pipeline-tool-stages]]. vs LlamaIndex/Haystack: [[rag-framework-ecosystem-comparison]].
 
 **Layman analogy:** a toolbox sold as **drawers** — screwdrivers in one, saws in another. You pull from the right drawer instead of one giant chest.
 
@@ -33,7 +35,12 @@ Modern LangChain splits across **multiple pip packages** instead of one monolith
 | Chroma store | **`langchain-chroma`** | `from langchain_chroma import Chroma` — see [[langchain-chroma-package]] |
 | Text splitter | `langchain-text-splitters` | `from langchain_text_splitters import RecursiveCharacterTextSplitter` |
 | Document type | `langchain-core` | `from langchain_core.documents import Document` |
-| Classic chains | `langchain-classic` | `from langchain_classic.chains import RetrievalQA` |
+| Classic chains | `langchain-classic` | `LLMChain`, `SequentialChain`, `RetrievalQA`, `ConversationChain` — [[langchain-classic-chains-overview]] |
+| Classic agents | `langchain-classic` | `create_react_agent`, `AgentExecutor` — [[langchain-react-agent-executor]] |
+| Classic memory | `langchain-classic` | `ConversationBufferMemory`, `ConversationSummaryMemory` |
+| Chat history store | `langchain-community` | `ChatMessageHistory` — [[seed-chat-message-history]] |
+| Message types | `langchain-core` | `HumanMessage`, `AIMessage` — JSON save/load |
+| Tools | `langchain-core` | `Tool` — [[rag-as-agent-tool]] |
 
 Exact import paths change across versions — pin versions in project `requirements.txt`.
 
@@ -51,6 +58,8 @@ Exact import paths change across versions — pin versions in project `requireme
 
 ## See also
 
+- [[rag-pipeline-tool-stages]] — where each package fits in ingest/query
+- [[rag-framework-ecosystem-comparison]]
 - [[langchain-chroma-package]]
 - [[langchain-documents-and-loaders]]
 - [[langchain-rag-chains-overview]]
